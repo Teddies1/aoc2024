@@ -49,3 +49,5 @@ class Solution(StrSplitSolution):
     # @answer((1234, 4567))
     # def solve(self) -> tuple[int, int]:
     #     pass
+
+#source .venv/bin/activate
