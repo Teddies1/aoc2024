@@ -29,3 +29,73 @@ def checksafe(arr: list[int]):
     
     return False
 
+def return_coordinates(matrix):    
+    row = len(matrix)
+    col = len(matrix[0])
+    for i in range(row):
+        for j in range(col):
+            if matrix[i][j] == "^":
+                return i, j
+
+def move_char(direction, x, y):
+    if direction == "up":
+        return go_up(x, y)
+    if direction == "down":
+        return go_down(x, y)
+    if direction == "left":
+        return go_left(x, y)
+    if direction == "right":
+        return go_right(x, y)
+        
+def go_up(x, y):
+    return x-1, y
+
+def go_right(x, y):
+    return x, y+1
+
+def go_left(x, y):
+    return x, y-1
+
+def go_down(x, y):
+    return x+1, y
+
+def obstacle_infront(direction, matrix, x, y):
+    if direction == "up":
+        if x-1 >= 0:
+            if matrix[x-1][y] == "#":
+                return "obstacle"
+        else:
+            return "exit"
+        
+    if direction == "down":
+        if x+1 < len(matrix):
+            if matrix[x+1][y] == "#":
+                return "obstacle"
+        else:
+            return "exit"
+        
+    if direction == "right":
+        if y+1 < len(matrix[0]):
+            if matrix[x][y+1] == "#":
+                return "obstacle"
+        else:
+            return "exit"
+        
+    if direction == "left":
+        if y-1 >= 0:
+            if matrix[x][y-1] == "#":
+                return "obstacle"
+        else:
+            return "exit"
+        
+    return "proceed"
+    
+def change_dir(direction):
+    if direction == "up":
+        return "right"
+    if direction == "down":
+        return "left"
+    if direction == "left":
+        return "up"
+    if direction == "right":
+        return "down"
