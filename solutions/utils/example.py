@@ -99,3 +99,8 @@ def change_dir(direction):
         return "up"
     if direction == "right":
         return "down"
+    
+def check_valid(x, y, row, col):
+    if x < 0 or x >= row or y < 0 or y >= col:
+        return False
+    return True
