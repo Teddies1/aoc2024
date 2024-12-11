@@ -104,3 +104,20 @@ def check_valid(x, y, row, col):
     if x < 0 or x >= row or y < 0 or y >= col:
         return False
     return True
+
+def process_stones(arr: list[int]):
+    n = len(arr)
+    for i in range(n):
+        if int(arr[i]) == 0:
+            arr[i] = (1)
+        elif len(str(arr[i])) % 2 == 0:
+            mid = (len(str(arr[i])) // 2) 
+            left_half = int(str(arr[i])[:mid])
+            right_half = int(str(arr[i])[mid:])
+            arr[i] = (left_half)
+            arr.append((right_half))
+        else:
+            arr[i] = (int(arr[i]) * 2024)
+
+    return arr
+
